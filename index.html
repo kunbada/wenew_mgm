@@ -7,640 +7,451 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #1a3a5c;
-    --accent: #c8973a;
-    --accent-light: #e8b95a;
-    --bg: #f5f3ee;
-    --bg-card: #ffffff;
-    --text: #1c1c1c;
-    --text-muted: #6b7280;
-    --border: #e2ddd5;
-    --success: #2d6a4f;
-    --error: #c0392b;
-    --radius: 12px;
-    --shadow: 0 4px 24px rgba(26,58,92,0.10);
+    --primary:#1a3a5c; --accent:#c8973a; --accent-light:#e8b95a;
+    --bg:#f5f3ee; --bg-card:#ffffff; --text:#1c1c1c; --text-muted:#6b7280;
+    --border:#e2ddd5; --success:#2d6a4f; --error:#c0392b;
+    --radius:12px; --shadow:0 4px 24px rgba(26,58,92,0.10);
   }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* Header */
+  .site-header{background:var(--primary);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.15);}
+  .logo{font-family:'DM Serif Display',serif;color:var(--accent);font-size:1.4rem;letter-spacing:0.02em;}
+  .logo span{color:#fff;font-size:0.8rem;font-family:'Noto Sans KR',sans-serif;font-weight:300;margin-left:8px;}
+  .header-nav{display:flex;gap:0.5rem;}
+  .btn-header{background:transparent;border:1.5px solid rgba(255,255,255,0.3);color:#fff;padding:7px 18px;border-radius:6px;cursor:pointer;font-size:0.85rem;font-family:'Noto Sans KR',sans-serif;transition:all 0.2s;}
+  .btn-header:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.6);}
+  .btn-header.active{background:var(--accent);border-color:var(--accent);color:var(--primary);font-weight:700;}
 
-  body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
+  /* Layout */
+  .main{padding:3rem 1rem;}
+  .container{max-width:580px;margin:0 auto;}
+  .container-wide{max-width:920px;margin:0 auto;}
 
-  /* ── Header ── */
-  .site-header {
-    background: var(--primary);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  }
-  .logo {
-    font-family: 'DM Serif Display', serif;
-    color: var(--accent);
-    font-size: 1.4rem;
-    letter-spacing: 0.02em;
-  }
-  .logo span { color: #fff; font-size: 0.8rem; font-family: 'Noto Sans KR', sans-serif; font-weight: 300; margin-left: 8px; }
-  .header-nav { display: flex; gap: 0.5rem; }
-  .btn-header {
-    background: transparent;
-    border: 1.5px solid rgba(255,255,255,0.3);
-    color: #fff;
-    padding: 7px 18px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    transition: all 0.2s;
-  }
-  .btn-header:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.6); }
-  .btn-header.active { background: var(--accent); border-color: var(--accent); color: var(--primary); font-weight: 700; }
+  /* Card */
+  .card{background:var(--bg-card);border-radius:var(--radius);box-shadow:var(--shadow);padding:2.2rem;border:1px solid var(--border);margin-bottom:1.2rem;}
+  .card-title{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--primary);margin-bottom:0.3rem;}
+  .card-sub{color:var(--text-muted);font-size:0.87rem;margin-bottom:1.8rem;line-height:1.65;}
 
-  /* ── Main Layout ── */
-  .main { padding: 3rem 1rem; }
-  .container { max-width: 520px; margin: 0 auto; }
-  .container-wide { max-width: 800px; margin: 0 auto; }
+  /* Section label */
+  .sec-label{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--primary);border-bottom:2px solid var(--accent);padding-bottom:5px;margin:1.6rem 0 1.1rem;display:flex;align-items:center;gap:6px;}
 
-  /* ── Cards ── */
-  .card {
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    padding: 2.5rem;
-    border: 1px solid var(--border);
-  }
-  .card-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    color: var(--primary);
-    margin-bottom: 0.4rem;
-  }
-  .card-sub {
-    color: var(--text-muted);
-    font-size: 0.88rem;
-    margin-bottom: 2rem;
-    line-height: 1.6;
-  }
+  /* Form */
+  .form-group{margin-bottom:1.1rem;}
+  .form-group label{display:block;font-size:0.82rem;font-weight:500;color:var(--text);margin-bottom:0.4rem;}
+  .form-group label .req{color:var(--accent);margin-left:2px;}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:0.93rem;font-family:'Noto Sans KR',sans-serif;color:var(--text);background:#fafaf8;transition:border-color 0.2s,box-shadow 0.2s;outline:none;}
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(26,58,92,0.08);background:#fff;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
 
-  /* ── Form elements ── */
-  .form-group { margin-bottom: 1.2rem; }
-  .form-group label {
-    display: block;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    letter-spacing: 0.02em;
-  }
-  .form-group label span.req { color: var(--accent); margin-left: 2px; }
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 11px 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    color: var(--text);
-    background: #fafaf8;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-  }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(26,58,92,0.08);
-    background: #fff;
-  }
-  .form-group textarea { resize: vertical; min-height: 80px; }
+  /* File upload */
+  .file-upload{border:2px dashed var(--border);border-radius:10px;padding:0.9rem 1.1rem;background:#fafaf8;cursor:pointer;position:relative;overflow:hidden;transition:all 0.2s;}
+  .file-upload:hover{border-color:var(--primary);background:#f0f4f8;}
+  .file-upload.done{border-color:var(--success);border-style:solid;background:#f0fdf4;}
+  .file-upload.err{border-color:var(--error);border-style:solid;background:#fef2f2;}
+  .file-upload input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:2;}
+  .fu-inner{display:flex;align-items:center;gap:10px;pointer-events:none;}
+  .fu-icon{font-size:1.3rem;flex-shrink:0;}
+  .fu-label{font-size:0.87rem;font-weight:600;color:var(--text);}
+  .fu-hint{font-size:0.76rem;color:var(--text-muted);margin-top:2px;}
+  .fu-hint.ok{color:var(--success);font-weight:600;}
+  .fu-hint.er{color:var(--error);}
 
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  /* 서약서 다운로드 */
+  .dl-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;border-radius:10px;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+  .dl-box-text strong{display:block;font-size:0.93rem;color:#1e3a8a;margin-bottom:2px;}
+  .dl-box-text span{font-size:0.81rem;color:#3b82f6;}
+  .btn-dl{background:#1e40af;color:#fff;border:none;padding:8px 18px;border-radius:7px;font-size:0.83rem;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;white-space:nowrap;transition:all 0.2s;}
+  .btn-dl:hover{background:#1d4ed8;transform:translateY(-1px);}
 
-  /* ── Buttons ── */
-  .btn {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    font-family: 'Noto Sans KR', sans-serif;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.02em;
-  }
-  .btn-primary {
-    background: var(--primary);
-    color: #fff;
-    margin-top: 0.5rem;
-  }
-  .btn-primary:hover { background: #243f69; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(26,58,92,0.25); }
-  .btn-primary:active { transform: translateY(0); }
-  .btn-accent {
-    background: var(--accent);
-    color: var(--primary);
-    margin-top: 0.5rem;
-  }
-  .btn-accent:hover { background: var(--accent-light); transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 1.5px solid var(--primary);
-    margin-top: 0.5rem;
-  }
-  .btn-outline:hover { background: var(--primary); color: #fff; }
-  .btn-sm {
-    width: auto;
-    padding: 6px 14px;
-    font-size: 0.8rem;
-    margin-top: 0;
-  }
-  .btn-danger { background: #fef2f2; color: var(--error); border: 1.5px solid #fca5a5; }
-  .btn-danger:hover { background: var(--error); color: #fff; }
-  .btn-success { background: #f0fdf4; color: var(--success); border: 1.5px solid #86efac; }
-  .btn-success:hover { background: var(--success); color: #fff; }
-  .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; }
+  /* 개인정보 동의 박스 */
+  .privacy-box{border:1.5px solid var(--border);border-radius:10px;background:#fafaf8;overflow:hidden;margin-bottom:0.8rem;}
+  .privacy-scroll{height:150px;overflow-y:auto;padding:1rem 1.2rem;font-size:0.80rem;line-height:1.9;color:var(--text-muted);border-bottom:1px solid var(--border);}
+  .privacy-scroll::-webkit-scrollbar{width:4px;}
+  .privacy-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+  .privacy-check{padding:0.75rem 1.2rem;display:flex;align-items:center;gap:8px;}
+  .privacy-check input[type=checkbox]{width:17px;height:17px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;}
+  .privacy-check label{font-size:0.88rem;font-weight:600;color:var(--text);cursor:pointer;}
+  .privacy-check label em{color:var(--error);font-style:normal;}
 
-  /* ── Divider ── */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-  }
-  .divider::before, .divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+  /* 관심타입 태그 */
+  .type-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .type-tag{padding:8px 18px;border:1.5px solid var(--border);border-radius:100px;font-size:0.85rem;cursor:pointer;transition:all 0.2s;background:#fafaf8;font-family:'Noto Sans KR',sans-serif;color:var(--text-muted);font-weight:500;}
+  .type-tag:hover{border-color:var(--primary);color:var(--primary);}
+  .type-tag.sel{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:700;}
+  .type-custom{margin-top:8px;display:none;}
+  .type-custom.show{display:block;}
 
-  /* ── Alerts ── */
-  .alert {
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    margin-bottom: 1.2rem;
-    display: none;
-    line-height: 1.5;
-  }
-  .alert.show { display: block; }
-  .alert-success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-  .alert-error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
-  .alert-info { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
-  .alert-warn { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  /* Check row */
+  .check-row{display:flex;align-items:flex-start;gap:10px;}
+  .check-row input[type=checkbox]{width:17px;height:17px;accent-color:var(--primary);cursor:pointer;flex-shrink:0;margin-top:2px;}
+  .check-row label{font-size:0.87rem;line-height:1.55;cursor:pointer;color:var(--text);}
+  .check-row label em{color:var(--error);font-style:normal;font-weight:700;}
 
-  /* ── Pages ── */
-  .page { display: none; }
-  .page.active { display: block; }
+  /* Buttons */
+  .btn{width:100%;padding:13px;border:none;border-radius:8px;font-size:0.95rem;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all 0.2s;}
+  .btn-primary{background:var(--primary);color:#fff;}
+  .btn-primary:hover{background:#243f69;transform:translateY(-1px);box-shadow:0 4px 16px rgba(26,58,92,0.25);}
+  .btn-accent{background:var(--accent);color:var(--primary);}
+  .btn-accent:hover{background:var(--accent-light);transform:translateY(-1px);}
+  .btn-outline{background:transparent;color:var(--primary);border:1.5px solid var(--primary);}
+  .btn-outline:hover{background:var(--primary);color:#fff;}
+  .btn-sm{width:auto;padding:6px 14px;font-size:0.8rem;}
+  .btn-danger{background:#fef2f2;color:var(--error);border:1.5px solid #fca5a5;}
+  .btn-danger:hover{background:var(--error);color:#fff;}
+  .btn-ok{background:#f0fdf4;color:var(--success);border:1.5px solid #86efac;}
+  .btn-ok:hover{background:var(--success);color:#fff;}
+  .btn:disabled{opacity:0.5;cursor:not-allowed;transform:none!important;}
 
-  /* ── Hero ── */
-  .hero {
-    text-align: center;
-    padding: 4rem 1rem 3rem;
-  }
-  .hero-badge {
-    display: inline-block;
-    background: rgba(200,151,58,0.12);
-    color: var(--accent);
-    border: 1px solid rgba(200,151,58,0.3);
-    padding: 5px 16px;
-    border-radius: 100px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    margin-bottom: 1.2rem;
-  }
-  .hero h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    color: var(--primary);
-    line-height: 1.25;
-    margin-bottom: 1rem;
-  }
-  .hero p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 420px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-  }
-  .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .hero-actions .btn { width: auto; padding: 13px 32px; }
+  /* Steps */
+  .steps{display:flex;align-items:flex-start;margin-bottom:2rem;}
+  .step{display:flex;flex-direction:column;align-items:center;flex:1;}
+  .step-circle{width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;color:var(--text-muted);transition:all 0.3s;}
+  .step.active .step-circle{border-color:var(--primary);background:var(--primary);color:#fff;}
+  .step.done .step-circle{border-color:var(--success);background:var(--success);color:#fff;}
+  .step-label{font-size:0.72rem;color:var(--text-muted);margin-top:5px;font-weight:500;text-align:center;}
+  .step.active .step-label{color:var(--primary);font-weight:700;}
+  .step-line{flex:1;height:2px;background:var(--border);margin-top:17px;transition:background 0.3s;}
+  .step-line.done{background:var(--success);}
 
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.2rem;
-    margin-top: 3rem;
-  }
-  .feature-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    text-align: center;
-  }
-  .feature-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(26,58,92,0.08);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1rem;
-    font-size: 1.5rem;
-  }
-  .feature-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 0.4rem; }
-  .feature-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  /* Alert */
+  .alert{padding:12px 16px;border-radius:8px;font-size:0.88rem;margin-bottom:1.2rem;display:none;line-height:1.55;}
+  .alert.show{display:block;}
+  .alert-success{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+  .alert-error{background:#fef2f2;color:#991b1b;border:1px solid #fecaca;}
+  .alert-info{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;}
 
-  /* ── Dashboard ── */
-  .dash-header {
-    background: var(--primary);
-    border-radius: var(--radius);
-    padding: 1.8rem 2rem;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .dash-header h2 { font-family: 'DM Serif Display', serif; font-size: 1.4rem; }
-  .dash-header p { font-size: 0.85rem; opacity: 0.75; margin-top: 2px; }
-  .dash-meta { text-align: right; }
-  .dash-meta .status-badge {
-    display: inline-block;
-    background: rgba(200,151,58,0.2);
-    color: var(--accent-light);
-    border: 1px solid rgba(200,151,58,0.3);
-    padding: 3px 12px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
+  /* Upload progress */
+  .up-status{font-size:0.82rem;color:#1e40af;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:10px 14px;margin-top:10px;display:none;}
+  .up-status.show{display:flex;align-items:center;gap:8px;}
 
-  .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-  .stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 1.3rem 1.5rem;
-  }
-  .stat-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.4rem; }
-  .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
-  .stat-value span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+  /* Pages */
+  .page{display:none;}
+  .page.active{display:block;}
 
-  /* ── Table ── */
-  .table-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-  }
-  .table-head {
-    padding: 1.2rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .table-head h3 { font-size: 0.95rem; font-weight: 700; color: var(--primary); }
-  table { width: 100%; border-collapse: collapse; }
-  th {
-    background: #f9f7f4;
-    padding: 10px 14px;
-    text-align: left;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--text-muted);
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--border);
-  }
-  td {
-    padding: 11px 14px;
-    font-size: 0.88rem;
-    border-bottom: 1px solid #f0ece6;
-    color: var(--text);
-  }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: #faf9f6; }
+  /* Hero */
+  .hero{text-align:center;padding:4rem 1rem 3rem;}
+  .hero-badge{display:inline-block;background:rgba(200,151,58,0.12);color:var(--accent);border:1px solid rgba(200,151,58,0.3);padding:5px 16px;border-radius:100px;font-size:0.78rem;font-weight:700;letter-spacing:0.08em;margin-bottom:1.2rem;}
+  .hero h1{font-family:'DM Serif Display',serif;font-size:clamp(2rem,5vw,3rem);color:var(--primary);line-height:1.25;margin-bottom:1rem;}
+  .hero p{color:var(--text-muted);font-size:1rem;max-width:420px;margin:0 auto 2.5rem;line-height:1.7;}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+  .hero-actions .btn{width:auto;padding:13px 32px;}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:3rem;}
+  .feature-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-align:center;}
+  .feature-icon{width:48px;height:48px;background:rgba(26,58,92,0.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.5rem;}
+  .feature-card h3{font-size:0.95rem;font-weight:700;color:var(--primary);margin-bottom:0.4rem;}
+  .feature-card p{font-size:0.82rem;color:var(--text-muted);line-height:1.6;}
 
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 700;
-  }
-  .badge-pending { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
-  .badge-active { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
-  .badge-paid { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  /* Dashboard */
+  .dash-header{background:var(--primary);border-radius:var(--radius);padding:1.8rem 2rem;color:#fff;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+  .dash-header h2{font-family:'DM Serif Display',serif;font-size:1.4rem;}
+  .dash-header p{font-size:0.85rem;opacity:0.75;margin-top:2px;}
+  .dash-meta{text-align:right;}
+  .status-badge{display:inline-block;background:rgba(200,151,58,0.2);color:var(--accent-light);border:1px solid rgba(200,151,58,0.3);padding:3px 12px;border-radius:100px;font-size:0.75rem;font-weight:700;}
+  .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+  .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem 1.5rem;}
+  .stat-label{font-size:0.78rem;color:var(--text-muted);font-weight:500;margin-bottom:0.4rem;}
+  .stat-value{font-size:1.8rem;font-weight:700;color:var(--primary);}
+  .stat-value span{font-size:0.9rem;font-weight:400;color:var(--text-muted);}
 
-  /* ── Tabs ── */
-  .tabs { display: flex; gap: 0; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border); }
-  .tab-btn {
-    background: none;
-    border: none;
-    padding: 10px 20px;
-    font-size: 0.88rem;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-weight: 500;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -2px;
-    transition: all 0.2s;
-  }
-  .tab-btn.active { color: var(--primary); font-weight: 700; border-bottom-color: var(--primary); }
-  .tab-btn:hover:not(.active) { color: var(--text); }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
+  /* Table */
+  .table-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem;}
+  .table-wrap{overflow-x:auto;}
+  .table-head{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+  .table-head h3{font-size:0.95rem;font-weight:700;color:var(--primary);}
+  table{width:100%;border-collapse:collapse;min-width:580px;}
+  th{background:#f9f7f4;padding:10px 14px;text-align:left;font-size:0.75rem;font-weight:700;color:var(--text-muted);letter-spacing:0.04em;text-transform:uppercase;border-bottom:1px solid var(--border);white-space:nowrap;}
+  td{padding:11px 14px;font-size:0.86rem;border-bottom:1px solid #f0ece6;color:var(--text);}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:#faf9f6;}
+  .badge{display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.74rem;font-weight:700;white-space:nowrap;}
+  .badge-pending{background:#fffbeb;color:#92400e;border:1px solid #fde68a;}
+  .badge-active{background:#f0fdf4;color:#166534;border:1px solid #bbf7d0;}
+  .badge-paid{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe;}
 
-  /* ── Spinner ── */
-  .spinner {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid rgba(255,255,255,0.4);
-    border-top-color: #fff;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    vertical-align: middle;
-    margin-right: 6px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
+  /* Tabs */
+  .tabs{display:flex;margin-bottom:1.5rem;border-bottom:2px solid var(--border);}
+  .tab-btn{background:none;border:none;padding:10px 20px;font-size:0.88rem;font-family:'Noto Sans KR',sans-serif;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;}
+  .tab-btn.active{color:var(--primary);font-weight:700;border-bottom-color:var(--primary);}
+  .tab-content{display:none;}
+  .tab-content.active{display:block;}
 
-  /* ── Config Modal ── */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-  }
-  .modal-overlay.show { display: flex; }
-  .modal {
-    background: #fff;
-    border-radius: var(--radius);
-    padding: 2rem;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
-  }
-  .modal h3 { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--primary); margin-bottom: 0.4rem; }
-  .modal p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+  .spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,0.4);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+  .spinner-blue{border-color:rgba(30,64,175,0.3);border-top-color:#1e40af;}
+  @keyframes spin{to{transform:rotate(360deg);}}
 
-  .link-text {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    text-align: center;
-    margin-top: 1rem;
-  }
-  .link-text a {
-    color: var(--primary);
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .link-text a:hover { text-decoration: underline; }
+  .link-text{font-size:0.82rem;color:var(--text-muted);text-align:center;margin-top:1rem;}
+  .link-text a{color:var(--primary);font-weight:600;cursor:pointer;text-decoration:none;}
+  .link-text a:hover{text-decoration:underline;}
+  .empty-state{text-align:center;padding:2.5rem;color:var(--text-muted);font-size:0.88rem;}
+  .empty-state .emoji{font-size:2rem;margin-bottom:0.6rem;}
 
-  .empty-state {
-    text-align: center;
-    padding: 2.5rem;
-    color: var(--text-muted);
-    font-size: 0.88rem;
-  }
-  .empty-state .emoji { font-size: 2rem; margin-bottom: 0.6rem; }
-
-  /* ── Password strength ── */
-  .pw-strength { height: 3px; border-radius: 2px; margin-top: 6px; transition: all 0.3s; background: var(--border); }
-  .pw-strength.weak { background: #ef4444; width: 33%; }
-  .pw-strength.medium { background: #f59e0b; width: 66%; }
-  .pw-strength.strong { background: #22c55e; width: 100%; }
-
-  /* ── Responsive ── */
-  @media (max-width: 540px) {
-    .card { padding: 1.5rem; }
-    .dash-grid { grid-template-columns: 1fr; }
-    .form-row { grid-template-columns: 1fr; }
-    .dash-header { flex-direction: column; text-align: center; }
-    .dash-meta { text-align: center; }
-    th, td { padding: 8px 10px; }
+  @media(max-width:560px){
+    .card{padding:1.4rem;}
+    .dash-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .dash-header{flex-direction:column;text-align:center;}
+    .dash-meta{text-align:center;}
   }
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════
-     HEADER
-══════════════════════════════════ -->
+<!-- ══ HEADER ══ -->
 <header class="site-header">
   <div class="logo">Partner<span>수수료 플랫폼</span></div>
-  <nav class="header-nav" id="headerNav">
-    <button class="btn-header active" onclick="showPage('home')">홈</button>
+  <nav class="header-nav">
+    <button class="btn-header" onclick="showPage('home')">홈</button>
     <button class="btn-header" onclick="showPage('register')">회원가입</button>
     <button class="btn-header" onclick="showPage('login')">로그인</button>
-
   </nav>
 </header>
 
-<!-- ══════════════════════════════════
-     CONFIG MODAL (GAS URL 설정)
-══════════════════════════════════ -->
-<div class="modal-overlay" id="configModal">
-  <div class="modal">
-    <h3>⚙️ 서버 연동 설정</h3>
-    <p>Google Apps Script 배포 URL을 입력하세요.<br>최초 1회만 설정하면 브라우저에 저장됩니다.</p>
-    <div class="form-group">
-      <label>Apps Script 웹앱 URL</label>
-      <input type="url" id="gasUrlInput" placeholder="https://script.google.com/macros/s/.../exec">
-    </div>
-    <button class="btn btn-primary" onclick="saveGasUrl()">저장</button>
-    <button class="btn btn-outline" style="margin-top:0.5rem" onclick="closeConfigModal()">취소</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════
-     HOME PAGE
-══════════════════════════════════ -->
+<!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
   <div class="hero">
     <div class="hero-badge">PARTNER COMMISSION PLATFORM</div>
     <h1>고객 소개로<br>수수료를 받으세요</h1>
-    <p>간편하게 가입하고, 고객을 소개하면<br>실적에 따라 수수료가 지급됩니다.</p>
+    <p>파트너로 가입하고 고객을 소개하면<br>실적에 따라 수수료가 지급됩니다.</p>
     <div class="hero-actions">
       <button class="btn btn-primary" onclick="showPage('register')">파트너 가입하기</button>
       <button class="btn btn-outline" onclick="showPage('login')">로그인</button>
     </div>
   </div>
-  <div class="container-wide" style="padding: 0 1rem 4rem;">
+  <div class="container-wide" style="padding:0 1rem 4rem">
     <div class="features">
-      <div class="feature-card">
-        <div class="feature-icon">📋</div>
-        <h3>간편 가입</h3>
-        <p>기본 정보만 입력하면 가입 신청 완료. 관리자 승인 후 즉시 활동 시작</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">👥</div>
-        <h3>고객 소개</h3>
-        <p>소개 고객의 성명·연락처를 등록하면 실시간으로 접수 및 관리</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💰</div>
-        <h3>수수료 지급</h3>
-        <p>소개 계약 성사 시 약정된 수수료 지급. 지급 현황을 앱에서 확인</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📊</div>
-        <h3>실시간 관리</h3>
-        <p>모든 회원·소개 데이터는 구글 시트와 실시간 연동되어 투명하게 관리</p>
-      </div>
+      <div class="feature-card"><div class="feature-icon">📋</div><h3>간편 가입</h3><p>기본 정보 입력 + 서류 업로드로 가입 신청 완료</p></div>
+      <div class="feature-card"><div class="feature-icon">👥</div><h3>고객 소개</h3><p>소개 등록 즉시 구글 시트에 실시간 저장</p></div>
+      <div class="feature-card"><div class="feature-icon">💰</div><h3>수수료 지급</h3><p>계약 성사 시 약정 수수료 투명하게 지급</p></div>
+      <div class="feature-card"><div class="feature-icon">📁</div><h3>서류 관리</h3><p>제출 서류 구글 드라이브 자동 저장</p></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     REGISTER PAGE
-══════════════════════════════════ -->
+<!-- ══ REGISTER ══ -->
 <div class="page" id="page-register">
   <div class="main">
     <div class="container">
-      <div class="card">
-        <div class="card-title">파트너 가입 신청</div>
-        <div class="card-sub">모든 항목을 정확히 입력해주세요.<br>관리자 승인 후 로그인이 가능합니다.</div>
 
-        <div id="alert-register" class="alert"></div>
+      <!-- Steps -->
+      <div class="steps" style="margin-bottom:2rem">
+        <div class="step active" id="step1"><div class="step-circle">1</div><div class="step-label">기본정보</div></div>
+        <div class="step-line" id="line1"></div>
+        <div class="step" id="step2"><div class="step-circle">2</div><div class="step-label">서류제출</div></div>
+        <div class="step-line" id="line2"></div>
+        <div class="step" id="step3"><div class="step-circle">3</div><div class="step-label">동의·완료</div></div>
+      </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label>이름 <span class="req">*</span></label>
-            <input type="text" id="reg-name" placeholder="홍길동">
+      <!-- STEP 1 -->
+      <div id="regStep1">
+        <div class="card">
+          <div class="card-title">파트너 가입 신청</div>
+          <div class="card-sub">기본 정보를 입력해주세요. 관리자 승인 후 로그인이 가능합니다.</div>
+          <div id="alert-reg1" class="alert"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>성명 <span class="req">*</span></label>
+              <input type="text" id="reg-name" placeholder="홍길동">
+            </div>
+            <div class="form-group">
+              <label>연락처 <span class="req">*</span></label>
+              <input type="tel" id="reg-phone" placeholder="010-0000-0000">
+            </div>
           </div>
           <div class="form-group">
-            <label>연락처 <span class="req">*</span></label>
-            <input type="tel" id="reg-phone" placeholder="010-0000-0000">
+            <label>업소명 <span class="req">*</span></label>
+            <input type="text" id="reg-company" placeholder="상호명 또는 업소명">
           </div>
-        </div>
-        <div class="form-group">
-          <label>이메일(아이디) <span class="req">*</span></label>
-          <input type="email" id="reg-email" placeholder="partner@email.com">
-        </div>
-        <div class="form-group">
-          <label>비밀번호 <span class="req">*</span></label>
-          <input type="password" id="reg-pw" placeholder="8자 이상" oninput="checkPw(this.value)">
-          <div class="pw-strength" id="pwStrength"></div>
-        </div>
-        <div class="form-group">
-          <label>비밀번호 확인 <span class="req">*</span></label>
-          <input type="password" id="reg-pw2" placeholder="비밀번호 재입력">
-        </div>
-        <div class="form-group">
-          <label>소속 / 직함 (선택)</label>
-          <input type="text" id="reg-org" placeholder="예) 프리랜서, ABC부동산">
-        </div>
-        <button class="btn btn-primary" onclick="doRegister()" id="btnRegister">가입 신청하기</button>
-
-        <div class="link-text">
-          이미 계정이 있으신가요? <a onclick="showPage('login')">로그인</a>
+          <div class="form-group">
+            <label>이메일(아이디) <span class="req">*</span></label>
+            <input type="email" id="reg-email" placeholder="partner@email.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>비밀번호 <span class="req">*</span></label>
+              <input type="password" id="reg-pw" placeholder="8자 이상">
+            </div>
+            <div class="form-group">
+              <label>비밀번호 확인 <span class="req">*</span></label>
+              <input type="password" id="reg-pw2" placeholder="재입력">
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="nextStep(2)" style="margin-top:0.8rem">다음 단계 →</button>
+          <div class="link-text">이미 계정이 있으신가요? <a onclick="showPage('login')">로그인</a></div>
         </div>
       </div>
+
+      <!-- STEP 2 -->
+      <div id="regStep2" style="display:none">
+        <div class="card">
+          <div class="card-title">서류 제출</div>
+          <div class="card-sub">4가지 서류를 모두 업로드해주세요.<br><span style="color:var(--text-muted);font-size:0.82rem">PDF, JPG, PNG 형식 · 각 파일 최대 10MB</span></div>
+          <div id="alert-reg2" class="alert"></div>
+
+          <!-- 서약서 다운로드 -->
+          <div class="dl-box">
+            <div class="dl-box-text">
+              <strong>📄 서약서 양식 다운로드</strong>
+              <span>출력 후 자필 서명 → 스캔/촬영하여 아래에 업로드</span>
+            </div>
+            <button class="btn-dl" onclick="downloadPledge()">⬇ 양식 다운로드</button>
+          </div>
+
+          <!-- 사업자등록증 -->
+          <div class="form-group">
+            <label>사업자등록증 <span class="req">*</span></label>
+            <div class="file-upload" id="fu-biz">
+              <input type="file" id="file-biz" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile('file-biz','fu-biz','fh-biz')">
+              <div class="fu-inner">
+                <div class="fu-icon">🏢</div>
+                <div><div class="fu-label">사업자등록증</div><div class="fu-hint" id="fh-biz">클릭하여 파일 선택 (PDF, JPG, PNG)</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 통장사본 -->
+          <div class="form-group">
+            <label>통장사본 <span class="req">*</span></label>
+            <div class="file-upload" id="fu-bank">
+              <input type="file" id="file-bank" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile('file-bank','fu-bank','fh-bank')">
+              <div class="fu-inner">
+                <div class="fu-icon">🏦</div>
+                <div><div class="fu-label">통장사본</div><div class="fu-hint" id="fh-bank">클릭하여 파일 선택 (PDF, JPG, PNG)</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 대표자 신분증 -->
+          <div class="form-group">
+            <label>대표자 신분증 <span class="req">*</span></label>
+            <div class="file-upload" id="fu-id">
+              <input type="file" id="file-id" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile('file-id','fu-id','fh-id')">
+              <div class="fu-inner">
+                <div class="fu-icon">🪪</div>
+                <div><div class="fu-label">대표자 신분증</div><div class="fu-hint" id="fh-id">클릭하여 파일 선택 (PDF, JPG, PNG)</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 서약서 -->
+          <div class="form-group">
+            <label>서약서 (작성 완료본) <span class="req">*</span></label>
+            <div class="file-upload" id="fu-pledge">
+              <input type="file" id="file-pledge" accept=".pdf,.jpg,.jpeg,.png" onchange="handleFile('file-pledge','fu-pledge','fh-pledge')">
+              <div class="fu-inner">
+                <div class="fu-icon">✍️</div>
+                <div><div class="fu-label">서약서</div><div class="fu-hint" id="fh-pledge">위 양식 다운로드 → 작성 → 업로드</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.8rem;margin-top:1rem">
+            <button class="btn btn-outline" style="flex:1" onclick="nextStep(1)">← 이전</button>
+            <button class="btn btn-primary" style="flex:2" onclick="nextStep(3)">다음 단계 →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="regStep3" style="display:none">
+        <div class="card">
+          <div class="card-title">개인정보 제공 동의</div>
+          <div class="card-sub">내용을 확인하시고 동의 후 제출해주세요.</div>
+          <div id="alert-reg3" class="alert"></div>
+
+          <div class="privacy-box">
+            <div class="privacy-scroll">
+개인정보 수집·이용 및 제3자 제공 동의서
+
+■ 수집하는 개인정보 항목
+성명, 연락처, 업소명, 이메일, 사업자등록증, 통장사본, 대표자 신분증
+
+■ 개인정보 수집·이용 목적
+파트너 계약 체결 및 관리, 고객 소개 수수료 산정 및 지급, 서비스 관련 공지 및 안내
+
+■ 개인정보 보유 및 이용기간
+계약 종료 후 5년간 보관 (관계 법령에 따름)
+
+■ 개인정보 제3자 제공
+- 제공받는 자: 위뉴(WeNew)
+- 제공 목적: 파트너 관리 및 수수료 지급
+- 제공 항목: 성명, 연락처, 업소명, 계좌 정보
+- 보유 기간: 계약 종료 후 5년
+
+■ 동의 거부 권리
+동의를 거부할 권리가 있으나, 거부 시 파트너 가입 및 서비스 이용이 제한됩니다.
+            </div>
+            <div class="privacy-check">
+              <input type="checkbox" id="privacyAgree">
+              <label for="privacyAgree">위 개인정보 수집·이용 및 제3자 제공에 <em>동의합니다 (필수)</em></label>
+            </div>
+          </div>
+
+          <div class="up-status" id="upStatus">
+            <span class="spinner spinner-blue"></span>
+            <span id="upStatusText">처리 중...</span>
+          </div>
+
+          <div style="display:flex;gap:0.8rem;margin-top:1rem">
+            <button class="btn btn-outline" style="flex:1" onclick="nextStep(2)">← 이전</button>
+            <button class="btn btn-primary" style="flex:2" id="btnSubmit" onclick="doRegister()">가입 신청 제출</button>
+          </div>
+          <div class="link-text">이미 계정이 있으신가요? <a onclick="showPage('login')">로그인</a></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     LOGIN PAGE
-══════════════════════════════════ -->
+<!-- ══ LOGIN ══ -->
 <div class="page" id="page-login">
   <div class="main">
     <div class="container">
       <div class="card">
         <div class="card-title">로그인</div>
         <div class="card-sub">승인된 계정으로 로그인하세요.</div>
-
         <div id="alert-login" class="alert"></div>
-
-        <div class="form-group">
-          <label>이메일</label>
-          <input type="email" id="login-email" placeholder="partner@email.com">
-        </div>
-        <div class="form-group">
-          <label>비밀번호</label>
-          <input type="password" id="login-pw" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter')doLogin()">
-        </div>
-        <button class="btn btn-primary" onclick="doLogin()" id="btnLogin">로그인</button>
-
-        <div class="link-text">
-          계정이 없으신가요? <a onclick="showPage('register')">가입 신청</a>
-        </div>
+        <div class="form-group"><label>이메일</label><input type="email" id="login-email" placeholder="partner@email.com"></div>
+        <div class="form-group"><label>비밀번호</label><input type="password" id="login-pw" onkeydown="if(event.key==='Enter')doLogin()"></div>
+        <button class="btn btn-primary" onclick="doLogin()" id="btnLogin" style="margin-top:0.8rem">로그인</button>
+        <div class="link-text">계정이 없으신가요? <a onclick="showPage('register')">가입 신청</a></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     MEMBER DASHBOARD
-══════════════════════════════════ -->
+<!-- ══ MEMBER DASHBOARD ══ -->
 <div class="page" id="page-dashboard">
   <div class="main">
     <div class="container-wide">
       <div class="dash-header">
-        <div>
-          <h2 id="dashWelcome">파트너님, 환영합니다</h2>
-          <p id="dashEmail"></p>
-        </div>
+        <div><h2 id="dashWelcome">파트너님, 환영합니다</h2><p id="dashSub"></p></div>
         <div class="dash-meta">
-          <div class="status-badge">✓ 승인 완료</div>
-          <br>
-          <button class="btn-header" style="margin-top:8px; font-size:0.8rem" onclick="doLogout()">로그아웃</button>
+          <div class="status-badge">✓ 승인 완료</div><br>
+          <button class="btn-header" style="margin-top:8px;font-size:0.8rem" onclick="doLogout()">로그아웃</button>
         </div>
       </div>
-
       <div class="dash-grid">
-        <div class="stat-card">
-          <div class="stat-label">총 소개 건수</div>
-          <div class="stat-value" id="statTotal">0 <span>건</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">수수료 지급 완료</div>
-          <div class="stat-value" id="statPaid">0 <span>건</span></div>
-        </div>
+        <div class="stat-card"><div class="stat-label">총 소개 건수</div><div class="stat-value" id="statTotal">0 <span>건</span></div></div>
+        <div class="stat-card"><div class="stat-label">수수료 지급 완료</div><div class="stat-value" id="statPaid">0 <span>건</span></div></div>
       </div>
-
       <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('tab-refer')">고객 소개 등록</button>
-        <button class="tab-btn" onclick="switchTab('tab-list')">소개 내역</button>
+        <button class="tab-btn active" onclick="switchTab('tab-refer',this)">고객 소개 등록</button>
+        <button class="tab-btn" onclick="switchTab('tab-list',this)">소개 내역</button>
       </div>
 
-      <!-- Tab: 소개 등록 -->
+      <!-- 소개 등록 -->
       <div class="tab-content active" id="tab-refer">
         <div class="card">
           <div class="card-title" style="font-size:1.2rem">고객 소개 등록</div>
-          <div class="card-sub">소개하시는 고객의 정보를 입력해주세요.<br>접수 후 담당자가 연락드립니다.</div>
-
+          <div class="card-sub">소개 고객의 정보를 입력하세요. 고객 개인정보 제공 동의를 먼저 받아야 합니다.</div>
           <div id="alert-refer" class="alert"></div>
-
           <div class="form-row">
             <div class="form-group">
-              <label>고객 성명 <span class="req">*</span></label>
-              <input type="text" id="ref-name" placeholder="고객 이름">
+              <label>고객명 <span class="req">*</span></label>
+              <input type="text" id="ref-name" placeholder="고객 성명">
             </div>
             <div class="form-group">
               <label>고객 연락처 <span class="req">*</span></label>
@@ -648,500 +459,450 @@
             </div>
           </div>
           <div class="form-group">
-            <label>관심 상품 / 메모 (선택)</label>
-            <textarea id="ref-memo" placeholder="고객이 관심 있는 상품이나 특이사항을 메모하세요"></textarea>
+            <label>관심 타입 <span class="req">*</span></label>
+            <div class="type-tags">
+              <button type="button" class="type-tag" onclick="selType(this,'59㎡')">59㎡</button>
+              <button type="button" class="type-tag" onclick="selType(this,'74㎡')">74㎡</button>
+              <button type="button" class="type-tag" onclick="selType(this,'84㎡')">84㎡</button>
+              <button type="button" class="type-tag" onclick="selType(this,'101㎡')">101㎡</button>
+              <button type="button" class="type-tag" onclick="selType(this,'미정')">미정</button>
+              <button type="button" class="type-tag" onclick="selType(this,'직접입력')">직접입력 ✏️</button>
+            </div>
+            <div class="type-custom" id="typeCustom">
+              <input type="text" id="typeCustomInput" placeholder="관심 타입 직접 입력" style="margin-top:8px">
+            </div>
           </div>
-          <button class="btn btn-accent" onclick="doRefer()" id="btnRefer">소개 등록하기</button>
+          <div class="form-group" style="margin-top:0.5rem">
+            <label>개인정보 제공 동의 확인 <span class="req">*</span></label>
+            <div style="background:#fafaf8;border:1.5px solid var(--border);border-radius:10px;overflow:hidden">
+              <div style="padding:0.85rem 1.1rem;font-size:0.81rem;color:var(--text-muted);line-height:1.75;border-bottom:1px solid var(--border)">
+                본인은 소개하는 고객의 개인정보(성명, 연락처)를 위뉴(WeNew)에 제공하는 것에 대해 해당 고객으로부터 사전 동의를 받았음을 확인합니다. 수집된 정보는 분양 상담 목적으로만 사용됩니다.
+              </div>
+              <div style="padding:0.75rem 1.1rem">
+                <div class="check-row">
+                  <input type="checkbox" id="ref-privacy">
+                  <label for="ref-privacy">고객으로부터 개인정보 제공 동의를 받았습니다 <em>(필수)</em></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-accent" onclick="doRefer()" id="btnRefer" style="margin-top:1rem">소개 등록하기</button>
         </div>
       </div>
 
-      <!-- Tab: 소개 내역 -->
+      <!-- 소개 내역 -->
       <div class="tab-content" id="tab-list">
         <div class="table-card">
-          <div class="table-head">
-            <h3>내 소개 내역</h3>
-            <button class="btn btn-outline btn-sm" onclick="loadMyReferrals()">새로고침</button>
-          </div>
-          <div id="referralTableWrap">
-            <div class="empty-state"><div class="emoji">📋</div>소개 내역을 불러오는 중...</div>
-          </div>
+          <div class="table-head"><h3>내 소개 내역</h3><button class="btn btn-outline btn-sm" onclick="loadMyReferrals()">새로고침</button></div>
+          <div class="table-wrap"><div id="referralTableWrap"><div class="empty-state"><div class="emoji">📋</div>불러오는 중...</div></div></div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════
-     ADMIN DASHBOARD
-══════════════════════════════════ -->
+<!-- ══ ADMIN ══ -->
 <div class="page" id="page-admin">
   <div class="main">
     <div class="container-wide">
       <div class="dash-header">
-        <div>
-          <h2>관리자 대시보드</h2>
-          <p>회원 승인 및 소개 현황 관리</p>
-        </div>
+        <div><h2>관리자 대시보드</h2><p>회원 승인 및 소개 현황 관리</p></div>
         <div class="dash-meta">
-          <div class="status-badge">🔑 ADMIN</div>
-          <br>
-          <button class="btn-header" style="margin-top:8px; font-size:0.8rem" onclick="doLogout()">로그아웃</button>
+          <div class="status-badge">🔑 ADMIN</div><br>
+          <button class="btn-header" style="margin-top:8px;font-size:0.8rem" onclick="doLogout()">로그아웃</button>
         </div>
       </div>
-
-      <div class="dash-grid" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="stat-card">
-          <div class="stat-label">전체 회원</div>
-          <div class="stat-value" id="adminStatMembers">- <span>명</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">승인 대기</div>
-          <div class="stat-value" id="adminStatPending">- <span>명</span></div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">총 소개 건수</div>
-          <div class="stat-value" id="adminStatRefers">- <span>건</span></div>
-        </div>
+      <div class="dash-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="stat-card"><div class="stat-label">전체 회원</div><div class="stat-value" id="adminStatMembers">-<span> 명</span></div></div>
+        <div class="stat-card"><div class="stat-label">승인 대기</div><div class="stat-value" id="adminStatPending">-<span> 명</span></div></div>
+        <div class="stat-card"><div class="stat-label">총 소개 건수</div><div class="stat-value" id="adminStatRefers">-<span> 건</span></div></div>
       </div>
-
       <div class="tabs">
-        <button class="tab-btn active" onclick="switchAdminTab('admin-tab-members')">회원 관리</button>
-        <button class="tab-btn" onclick="switchAdminTab('admin-tab-referrals')">소개 현황</button>
+        <button class="tab-btn active" onclick="switchAdminTab('admin-members',this)">회원 관리</button>
+        <button class="tab-btn" onclick="switchAdminTab('admin-referrals',this)">소개 현황</button>
       </div>
-
-      <!-- Admin Tab: 회원 관리 -->
-      <div class="tab-content active" id="admin-tab-members">
+      <div class="tab-content active" id="admin-members">
         <div class="table-card">
-          <div class="table-head">
-            <h3>회원 목록</h3>
-            <button class="btn btn-outline btn-sm" onclick="loadAdminMembers()">새로고침</button>
-          </div>
-          <div id="adminMembersWrap">
-            <div class="empty-state"><div class="emoji">👥</div>불러오는 중...</div>
-          </div>
+          <div class="table-head"><h3>회원 목록</h3><button class="btn btn-outline btn-sm" onclick="loadAdminMembers()">새로고침</button></div>
+          <div class="table-wrap"><div id="adminMembersWrap"><div class="empty-state"><div class="emoji">👥</div>불러오는 중...</div></div></div>
         </div>
       </div>
-
-      <!-- Admin Tab: 소개 현황 -->
-      <div class="tab-content" id="admin-tab-referrals">
+      <div class="tab-content" id="admin-referrals">
         <div class="table-card">
-          <div class="table-head">
-            <h3>전체 소개 현황</h3>
-            <button class="btn btn-outline btn-sm" onclick="loadAdminReferrals()">새로고침</button>
-          </div>
-          <div id="adminReferralsWrap">
-            <div class="empty-state"><div class="emoji">📊</div>불러오는 중...</div>
-          </div>
+          <div class="table-head"><h3>전체 소개 현황</h3><button class="btn btn-outline btn-sm" onclick="loadAdminReferrals()">새로고침</button></div>
+          <div class="table-wrap"><div id="adminReferralsWrap"><div class="empty-state"><div class="emoji">📊</div>불러오는 중...</div></div></div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 
-
-<!-- ══════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════ -->
 <script>
-// ── State ──────────────────────────────────────────────
-let GAS_URL = 'https://script.google.com/macros/s/AKfycbwgdSacRH-G-huI2vBxyZC0ocnDYfaREsI7BguMYzUVY3RVtRK-2EZf0OBiRMUOfvs9/exec';
+// ── 설정 ──────────────────────────────────────────────────────
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbwgdSacRH-G-huI2vBxyZC0ocnDYfaREsI7BguMYzUVY3RVtRK-2EZf0OBiRMUOfvs9/exec';
 let currentUser = null;
 
-// ── Config modal ───────────────────────────────────────
-function showConfigModal() {
-  document.getElementById('gasUrlInput').value = GAS_URL;
-  document.getElementById('configModal').classList.add('show');
+// ── 서약서 다운로드 ───────────────────────────────────────────
+function downloadPledge() {
+  const txt = [
+    '파트너 서약서','='.repeat(40),'',
+    '서약자 성명: ___________________',
+    '업소명:     ___________________',
+    '연락처:     ___________________',
+    '서약일:     ___년 ___월 ___일','',
+    '본인은 위뉴(WeNew) 파트너로서 아래 사항을 성실히 준수할 것을 서약합니다.','',
+    '제1조 (성실 의무)',
+    '고객 소개 활동 시 허위 정보를 제공하지 않으며 회사의 영업 방침을 준수합니다.','',
+    '제2조 (개인정보 보호)',
+    '소개 고객의 개인정보를 소개 목적 이외에 사용하지 않으며 제3자에게 무단 제공하지 않습니다.','',
+    '제3조 (비밀 유지)',
+    '계약 조건, 수수료율 등 영업 관련 정보를 외부에 누설하지 않습니다.','',
+    '제4조 (부당 행위 금지)',
+    '파트너 자격을 이용한 부당 이득 행위 및 명의 대여 행위를 하지 않습니다.','',
+    '제5조 (위반 시 책임)',
+    '위 사항을 위반할 경우 파트너 계약 즉시 해지 및 법적 책임을 집니다.','','',
+    '서약자 서명: ___________________  (인)'
+  ].join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([txt], {type:'text/plain;charset=utf-8'}));
+  a.download = '위뉴_파트너_서약서양식.txt';
+  a.click();
 }
-function closeConfigModal() {
-  document.getElementById('configModal').classList.remove('show');
-}
-function saveGasUrl() {
-  const url = document.getElementById('gasUrlInput').value.trim();
-  if (!url || !url.startsWith('https://')) {
-    alert('올바른 URL을 입력하세요.');
+
+// ── 파일 업로드 핸들러 ────────────────────────────────────────
+function handleFile(inputId, areaId, hintId) {
+  const file = document.getElementById(inputId).files[0];
+  const area = document.getElementById(areaId);
+  const hint = document.getElementById(hintId);
+  if (!file) return;
+  if (file.size > 10 * 1024 * 1024) {
+    area.classList.add('err');
+    hint.className = 'fu-hint er';
+    hint.textContent = '⚠ 10MB 초과 — 다른 파일을 선택하세요';
+    document.getElementById(inputId).value = '';
     return;
   }
-  GAS_URL = url;
-  localStorage.setItem('gas_url', GAS_URL);
-  closeConfigModal();
-  showAlert('alert-login', '서버 URL이 저장되었습니다.', 'success');
+  area.classList.remove('err');
+  area.classList.add('done');
+  hint.className = 'fu-hint ok';
+  hint.textContent = `✓ ${file.name}  (${(file.size/1024/1024).toFixed(2)} MB)`;
 }
 
-// ── Page routing ───────────────────────────────────────
+// ── 관심타입 ──────────────────────────────────────────────────
+function selType(el, val) {
+  document.querySelectorAll('.type-tag').forEach(t => t.classList.remove('sel'));
+  el.classList.add('sel');
+  const wrap = document.getElementById('typeCustom');
+  val === '직접입력' ? wrap.classList.add('show') : wrap.classList.remove('show');
+}
+function getType() {
+  const sel = document.querySelector('.type-tag.sel');
+  if (!sel) return '';
+  const v = sel.textContent.replace(' ✏️','').trim();
+  if (v === '직접입력') return document.getElementById('typeCustomInput').value.trim();
+  return v;
+}
+
+// ── 페이지 전환 ───────────────────────────────────────────────
 function showPage(name) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
+  document.getElementById('page-'+name).classList.add('active');
+  window.scrollTo(0,0);
+  if (name==='dashboard') loadMyReferrals();
+  if (name==='admin') { loadAdminMembers(); loadAdminReferrals(); }
+}
 
-  // Header nav highlight
-  const navMap = { home: 0, register: 1, login: 2 };
-  document.querySelectorAll('.btn-header:not(#btnConfig)').forEach((b, i) => {
-    b.classList.remove('active');
+// ── 가입 스텝 ─────────────────────────────────────────────────
+function nextStep(n) {
+  if (n === 2) {
+    const name    = document.getElementById('reg-name').value.trim();
+    const phone   = document.getElementById('reg-phone').value.trim();
+    const company = document.getElementById('reg-company').value.trim();
+    const email   = document.getElementById('reg-email').value.trim();
+    const pw      = document.getElementById('reg-pw').value;
+    const pw2     = document.getElementById('reg-pw2').value;
+    if (!name||!phone||!company||!email||!pw) return showAlert('alert-reg1','필수 항목을 모두 입력해주세요.','error');
+    if (!/\S+@\S+\.\S+/.test(email)) return showAlert('alert-reg1','이메일 형식이 올바르지 않습니다.','error');
+    if (pw.length < 8) return showAlert('alert-reg1','비밀번호는 8자 이상이어야 합니다.','error');
+    if (pw !== pw2) return showAlert('alert-reg1','비밀번호가 일치하지 않습니다.','error');
+  }
+  if (n === 3) {
+    const checks = [['file-biz','사업자등록증'],['file-bank','통장사본'],['file-id','대표자 신분증'],['file-pledge','서약서']];
+    for (const [id, label] of checks) {
+      if (!document.getElementById(id).files[0]) return showAlert('alert-reg2',`${label}을(를) 업로드해주세요.`,'error');
+    }
+  }
+  ['regStep1','regStep2','regStep3'].forEach((s,i) => {
+    document.getElementById(s).style.display = (i+1===n) ? 'block' : 'none';
   });
-
-  if (name === 'dashboard') {
-    loadMyReferrals();
-  }
-  if (name === 'admin') {
-    loadAdminMembers();
-    loadAdminReferrals();
-  }
+  ['step1','step2','step3'].forEach((s,i) => {
+    const el = document.getElementById(s);
+    el.classList.remove('active','done');
+    if (i+1 < n) el.classList.add('done');
+    if (i+1 === n) el.classList.add('active');
+  });
+  document.getElementById('line1').classList.toggle('done', n>1);
+  document.getElementById('line2').classList.toggle('done', n>2);
+  window.scrollTo(0,0);
 }
 
-// ── Tabs ───────────────────────────────────────────────
-function switchTab(id) {
-  document.querySelectorAll('#page-dashboard .tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-dashboard .tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-  if (id === 'tab-list') loadMyReferrals();
-}
-function switchAdminTab(id) {
-  document.querySelectorAll('#page-admin .tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('#page-admin .tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
-  if (id === 'admin-tab-referrals') loadAdminReferrals();
-  if (id === 'admin-tab-members') loadAdminMembers();
+// ── Base64 변환 ───────────────────────────────────────────────
+function toB64(file) {
+  return new Promise((res,rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
 }
 
-// ── Alerts ─────────────────────────────────────────────
-function showAlert(id, msg, type) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.className = 'alert alert-' + type + ' show';
-  el.textContent = msg;
-  if (type === 'success') setTimeout(() => el.classList.remove('show'), 4000);
-}
-function hideAlert(id) {
-  const el = document.getElementById(id);
-  if (el) el.classList.remove('show');
-}
-
-// ── Password strength ──────────────────────────────────
-function checkPw(val) {
-  const bar = document.getElementById('pwStrength');
-  if (!val) { bar.className = 'pw-strength'; return; }
-  const score = (val.length >= 8 ? 1 : 0) + (/[A-Z]/.test(val) || /[0-9]/.test(val) ? 1 : 0) + (/[^a-zA-Z0-9]/.test(val) ? 1 : 0);
-  bar.className = 'pw-strength ' + ['weak','medium','strong'][score - 1] || 'weak';
-}
-
-// ── Phone format ───────────────────────────────────────
-function formatPhone(v) {
-  return v.replace(/\D/g, '').replace(/^(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3');
-}
-
-// ── API call ───────────────────────────────────────────
-async function apiCall(params) {
-  if (!GAS_URL) {
-    throw new Error('서버 URL이 설정되지 않았습니다. 우측 상단 ⚙️을 눌러 Apps Script URL을 입력하세요.');
-  }
-  const url = GAS_URL + '?' + new URLSearchParams(params).toString();
-  const res = await fetch(url, { method: 'GET' });
-  if (!res.ok) throw new Error('서버 응답 오류: ' + res.status);
-  return await res.json();
-}
-
-// ── Register ───────────────────────────────────────────
+// ── 회원가입 제출 ─────────────────────────────────────────────
 async function doRegister() {
-  const name = document.getElementById('reg-name').value.trim();
-  const phone = document.getElementById('reg-phone').value.trim();
-  const email = document.getElementById('reg-email').value.trim();
-  const pw = document.getElementById('reg-pw').value;
-  const pw2 = document.getElementById('reg-pw2').value;
-  const org = document.getElementById('reg-org').value.trim();
+  if (!document.getElementById('privacyAgree').checked)
+    return showAlert('alert-reg3','개인정보 제공 동의는 필수입니다.','error');
 
-  hideAlert('alert-register');
-  if (!name || !phone || !email || !pw) return showAlert('alert-register', '필수 항목을 모두 입력해주세요.', 'error');
-  if (pw !== pw2) return showAlert('alert-register', '비밀번호가 일치하지 않습니다.', 'error');
-  if (pw.length < 8) return showAlert('alert-register', '비밀번호는 8자 이상이어야 합니다.', 'error');
-  if (!/\S+@\S+\.\S+/.test(email)) return showAlert('alert-register', '이메일 형식이 올바르지 않습니다.', 'error');
-
-  const btn = document.getElementById('btnRegister');
+  const btn = document.getElementById('btnSubmit');
+  const status = document.getElementById('upStatus');
+  const statusTxt = document.getElementById('upStatusText');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>처리 중...';
+  status.classList.add('show');
+
+  const fileList = [
+    {id:'file-biz',   label:'사업자등록증'},
+    {id:'file-bank',  label:'통장사본'},
+    {id:'file-id',    label:'대표자신분증'},
+    {id:'file-pledge',label:'서약서'}
+  ];
 
   try {
-    const result = await apiCall({ action: 'register', name, phone, email, pw, org });
-    if (result.success) {
-      showAlert('alert-register', '✅ 가입 신청이 완료되었습니다! 관리자 승인 후 로그인이 가능합니다.', 'success');
-      ['reg-name','reg-phone','reg-email','reg-pw','reg-pw2','reg-org'].forEach(id => document.getElementById(id).value = '');
-    } else {
-      showAlert('alert-register', '❌ ' + (result.message || '가입 처리 중 오류가 발생했습니다.'), 'error');
+    const filesData = [];
+    for (let i=0; i<fileList.length; i++) {
+      const f = fileList[i];
+      const file = document.getElementById(f.id).files[0];
+      statusTxt.textContent = `파일 변환 중 (${i+1}/4) — ${f.label}`;
+      const b64 = await toB64(file);
+      filesData.push({ name:file.name, mimeType:file.type, data:b64, label:f.label });
     }
-  } catch (e) {
-    showAlert('alert-register', '❌ ' + e.message, 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '가입 신청하기';
+    statusTxt.textContent = '☁️ 구글 드라이브 업로드 중... (잠시 기다려주세요)';
+
+    const payload = {
+      action:        'register',
+      name:          document.getElementById('reg-name').value.trim(),
+      phone:         document.getElementById('reg-phone').value.trim(),
+      company:       document.getElementById('reg-company').value.trim(),
+      email:         document.getElementById('reg-email').value.trim(),
+      pw:            document.getElementById('reg-pw').value,
+      privacyAgreed: 'true',
+      files:         filesData
+    };
+
+    const res    = await fetch(GAS_URL, {method:'POST', body:JSON.stringify(payload)});
+    const result = await res.json();
+
+    status.classList.remove('show');
+    if (result.success) {
+      showAlert('alert-reg3','✅ 가입 신청이 완료되었습니다! 관리자 승인 후 로그인하실 수 있습니다.','success');
+      btn.textContent = '✓ 제출 완료';
+    } else {
+      showAlert('alert-reg3','❌ '+(result.message||'오류가 발생했습니다.'),'error');
+      btn.disabled = false; btn.textContent = '가입 신청 제출';
+    }
+  } catch(e) {
+    status.classList.remove('show');
+    showAlert('alert-reg3','❌ '+e.message,'error');
+    btn.disabled = false; btn.textContent = '가입 신청 제출';
   }
 }
 
-// ── Login ──────────────────────────────────────────────
+// ── 로그인 ────────────────────────────────────────────────────
 async function doLogin() {
   const email = document.getElementById('login-email').value.trim();
-  const pw = document.getElementById('login-pw').value;
-
+  const pw    = document.getElementById('login-pw').value;
   hideAlert('alert-login');
-  if (!email || !pw) return showAlert('alert-login', '이메일과 비밀번호를 입력하세요.', 'error');
-
+  if (!email||!pw) return showAlert('alert-login','이메일과 비밀번호를 입력하세요.','error');
   const btn = document.getElementById('btnLogin');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>로그인 중...';
-
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span>로그인 중...';
   try {
-    const result = await apiCall({ action: 'login', email, pw });
-    if (result.success) {
-      currentUser = result.user;
+    const r = await apiGet({action:'login',email,pw});
+    if (r.success) {
+      currentUser = r.user;
       sessionStorage.setItem('user', JSON.stringify(currentUser));
-
-      if (currentUser.role === 'admin') {
-        enterAdmin();
-      } else {
-        enterDashboard();
-      }
+      r.user.role==='admin' ? enterAdmin() : enterDashboard();
     } else {
-      showAlert('alert-login', '❌ ' + (result.message || '로그인에 실패했습니다.'), 'error');
+      showAlert('alert-login','❌ '+(r.message||'로그인 실패'),'error');
     }
-  } catch (e) {
-    showAlert('alert-login', '❌ ' + e.message, 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '로그인';
-  }
+  } catch(e) { showAlert('alert-login','❌ '+e.message,'error'); }
+  finally { btn.disabled=false; btn.textContent='로그인'; }
 }
 
-// ── Logout ─────────────────────────────────────────────
-function doLogout() {
-  currentUser = null;
-  sessionStorage.removeItem('user');
-  showPage('login');
-}
+function doLogout() { currentUser=null; sessionStorage.removeItem('user'); showPage('login'); }
 
-// ── Enter Dashboard ────────────────────────────────────
 function enterDashboard() {
-  document.getElementById('dashWelcome').textContent = currentUser.name + '님, 환영합니다 👋';
-  document.getElementById('dashEmail').textContent = currentUser.email;
+  document.getElementById('dashWelcome').textContent = currentUser.name+'님, 환영합니다 👋';
+  document.getElementById('dashSub').textContent = (currentUser.company||'')+(currentUser.company?' · ':'')+currentUser.email;
   showPage('dashboard');
 }
+function enterAdmin() { showPage('admin'); loadAdminMembers(); loadAdminReferrals(); }
 
-// ── Enter Admin ────────────────────────────────────────
-function enterAdmin() {
-  showPage('admin');
-  loadAdminMembers();
-  loadAdminReferrals();
+// ── 고객 소개 등록 ────────────────────────────────────────────
+async function doRefer() {
+  const cName  = document.getElementById('ref-name').value.trim();
+  const cPhone = document.getElementById('ref-phone').value.trim();
+  const cType  = getType();
+  const ok     = document.getElementById('ref-privacy').checked;
+  hideAlert('alert-refer');
+  if (!cName||!cPhone) return showAlert('alert-refer','고객 성명과 연락처는 필수입니다.','error');
+  if (!cType)          return showAlert('alert-refer','관심 타입을 선택해주세요.','error');
+  if (!ok)             return showAlert('alert-refer','고객 개인정보 동의 확인이 필요합니다.','error');
+  const btn = document.getElementById('btnRefer');
+  btn.disabled=true; btn.innerHTML='<span class="spinner"></span>등록 중...';
+  try {
+    const r = await apiGet({action:'addReferral',partnerEmail:currentUser.email,partnerName:currentUser.name,customerName:cName,customerPhone:cPhone,interestType:cType,privacyAgreed:'true'});
+    if (r.success) {
+      showAlert('alert-refer','✅ 소개 등록이 완료되었습니다!','success');
+      document.getElementById('ref-name').value='';
+      document.getElementById('ref-phone').value='';
+      document.querySelectorAll('.type-tag').forEach(t=>t.classList.remove('sel'));
+      document.getElementById('typeCustom').classList.remove('show');
+      document.getElementById('ref-privacy').checked=false;
+      loadMyReferrals();
+    } else { showAlert('alert-refer','❌ '+(r.message||'오류'),'error'); }
+  } catch(e) { showAlert('alert-refer','❌ '+e.message,'error'); }
+  finally { btn.disabled=false; btn.textContent='소개 등록하기'; }
 }
 
-// ── Load my referrals ──────────────────────────────────
+// ── 내 소개 내역 ──────────────────────────────────────────────
 async function loadMyReferrals() {
   if (!currentUser) return;
   const wrap = document.getElementById('referralTableWrap');
-  wrap.innerHTML = '<div class="empty-state"><div class="emoji">⏳</div>불러오는 중...</div>';
-
+  wrap.innerHTML = loading();
   try {
-    const result = await apiCall({ action: 'getMyReferrals', email: currentUser.email });
-    if (result.success) {
-      const rows = result.data || [];
-      document.getElementById('statTotal').innerHTML = rows.length + ' <span>건</span>';
-      const paid = rows.filter(r => r.status === '지급완료').length;
-      document.getElementById('statPaid').innerHTML = paid + ' <span>건</span>';
-
-      if (!rows.length) {
-        wrap.innerHTML = '<div class="empty-state"><div class="emoji">📋</div>아직 등록한 소개가 없습니다.</div>';
-        return;
-      }
-      wrap.innerHTML = `
-        <table>
-          <thead><tr>
-            <th>등록일</th><th>고객명</th><th>연락처</th><th>메모</th><th>상태</th>
-          </tr></thead>
-          <tbody>
-            ${rows.map(r => `
-              <tr>
-                <td>${r.date}</td>
-                <td>${r.customerName}</td>
-                <td>${r.customerPhone}</td>
-                <td>${r.memo || '-'}</td>
-                <td><span class="badge ${r.status === '지급완료' ? 'badge-paid' : r.status === '계약완료' ? 'badge-active' : 'badge-pending'}">${r.status}</span></td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>`;
+    const r = await apiGet({action:'getMyReferrals',email:currentUser.email});
+    if (r.success) {
+      const rows = r.data||[];
+      document.getElementById('statTotal').innerHTML = rows.length+' <span>건</span>';
+      document.getElementById('statPaid').innerHTML  = rows.filter(x=>x.status==='지급완료').length+' <span>건</span>';
+      if (!rows.length) { wrap.innerHTML=empty('아직 등록한 소개가 없습니다.'); return; }
+      wrap.innerHTML = `<table><thead><tr><th>등록일</th><th>고객명</th><th>연락처</th><th>관심타입</th><th>동의</th><th>상태</th></tr></thead><tbody>
+        ${rows.map(r=>`<tr>
+          <td>${r.date}</td><td>${r.customerName}</td><td>${r.customerPhone}</td>
+          <td>${r.interestType||'-'}</td><td>${chkBadge(r.privacyAgreed)}</td>
+          <td>${statusBadge(r.status)}</td>
+        </tr>`).join('')}
+      </tbody></table>`;
     }
-  } catch(e) {
-    wrap.innerHTML = `<div class="empty-state"><div class="emoji">⚠️</div>${e.message}</div>`;
-  }
+  } catch(e) { wrap.innerHTML=empty('⚠️ '+e.message); }
 }
 
-// ── Submit referral ────────────────────────────────────
-async function doRefer() {
-  const cName = document.getElementById('ref-name').value.trim();
-  const cPhone = document.getElementById('ref-phone').value.trim();
-  const memo = document.getElementById('ref-memo').value.trim();
-
-  hideAlert('alert-refer');
-  if (!cName || !cPhone) return showAlert('alert-refer', '고객 성명과 연락처는 필수입니다.', 'error');
-
-  const btn = document.getElementById('btnRefer');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span>등록 중...';
-
-  try {
-    const result = await apiCall({
-      action: 'addReferral',
-      partnerEmail: currentUser.email,
-      partnerName: currentUser.name,
-      customerName: cName,
-      customerPhone: cPhone,
-      memo
-    });
-    if (result.success) {
-      showAlert('alert-refer', '✅ 소개 등록이 완료되었습니다!', 'success');
-      document.getElementById('ref-name').value = '';
-      document.getElementById('ref-phone').value = '';
-      document.getElementById('ref-memo').value = '';
-      loadMyReferrals();
-    } else {
-      showAlert('alert-refer', '❌ ' + (result.message || '등록 중 오류가 발생했습니다.'), 'error');
-    }
-  } catch(e) {
-    showAlert('alert-refer', '❌ ' + e.message, 'error');
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '소개 등록하기';
-  }
-}
-
-// ── Admin: Load Members ────────────────────────────────
+// ── 관리자: 회원 목록 ─────────────────────────────────────────
 async function loadAdminMembers() {
   const wrap = document.getElementById('adminMembersWrap');
-  wrap.innerHTML = '<div class="empty-state"><div class="emoji">⏳</div>불러오는 중...</div>';
-
+  wrap.innerHTML = loading();
   try {
-    const result = await apiCall({ action: 'getMembers', adminEmail: currentUser.email });
-    if (result.success) {
-      const rows = result.data || [];
-      document.getElementById('adminStatMembers').innerHTML = rows.length + ' <span>명</span>';
-      const pending = rows.filter(r => r.status === '대기').length;
-      document.getElementById('adminStatPending').innerHTML = pending + ' <span>명</span>';
-
-      if (!rows.length) {
-        wrap.innerHTML = '<div class="empty-state"><div class="emoji">👥</div>회원이 없습니다.</div>';
-        return;
-      }
-      wrap.innerHTML = `
-        <table>
-          <thead><tr>
-            <th>가입일</th><th>이름</th><th>이메일</th><th>연락처</th><th>소속</th><th>상태</th><th>관리</th>
-          </tr></thead>
-          <tbody>
-            ${rows.map(r => `
-              <tr>
-                <td>${r.date}</td>
-                <td>${r.name}</td>
-                <td>${r.email}</td>
-                <td>${r.phone}</td>
-                <td>${r.org || '-'}</td>
-                <td><span class="badge ${r.status === '승인' ? 'badge-active' : 'badge-pending'}">${r.status}</span></td>
-                <td>
-                  ${r.status === '대기' ? `<button class="btn btn-success btn-sm" onclick="approveMember('${r.email}')">승인</button>` : ''}
-                  ${r.role !== 'admin' ? `<button class="btn btn-danger btn-sm" style="margin-left:4px" onclick="rejectMember('${r.email}')">거부</button>` : ''}
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>`;
+    const r = await apiGet({action:'getMembers',adminEmail:currentUser.email});
+    if (r.success) {
+      const rows = r.data||[];
+      document.getElementById('adminStatMembers').innerHTML = rows.length+'<span> 명</span>';
+      document.getElementById('adminStatPending').innerHTML = rows.filter(x=>x.status==='대기').length+'<span> 명</span>';
+      if (!rows.length) { wrap.innerHTML=empty('회원이 없습니다.'); return; }
+      wrap.innerHTML = `<table><thead><tr>
+        <th>회원번호</th><th>가입일</th><th>성명</th><th>업소명</th><th>이메일</th><th>연락처</th><th>서류</th><th>상태</th><th>관리</th>
+      </tr></thead><tbody>
+        ${rows.map(r=>`<tr>
+          <td><b>${r.memberId||'-'}</b></td>
+          <td>${r.date}</td><td>${r.name}</td><td>${r.company||'-'}</td>
+          <td style="font-size:0.8rem">${r.email}</td><td>${r.phone}</td>
+          <td>${r.driveLink?`<a href="${r.driveLink}" target="_blank" style="color:var(--primary);font-weight:600;font-size:0.82rem">📁 보기</a>`:'-'}</td>
+          <td>${r.status==='승인'?'<span class="badge badge-active">승인</span>':'<span class="badge badge-pending">'+r.status+'</span>'}</td>
+          <td style="display:flex;gap:4px;flex-wrap:wrap">
+            ${r.status==='대기'?`<button class="btn btn-ok btn-sm" onclick="approveMember('${r.email}')">승인</button>`:''}
+            ${r.role!=='admin'?`<button class="btn btn-danger btn-sm" onclick="rejectMember('${r.email}')">거부</button>`:''}
+          </td>
+        </tr>`).join('')}
+      </tbody></table>`;
     }
-  } catch(e) {
-    wrap.innerHTML = `<div class="empty-state"><div class="emoji">⚠️</div>${e.message}</div>`;
-  }
+  } catch(e) { wrap.innerHTML=empty('⚠️ '+e.message); }
 }
 
-// ── Admin: Approve Member ──────────────────────────────
 async function approveMember(email) {
-  if (!confirm(email + '을(를) 승인하시겠습니까?')) return;
-  try {
-    const result = await apiCall({ action: 'approveMember', adminEmail: currentUser.email, targetEmail: email });
-    if (result.success) loadAdminMembers();
-    else alert(result.message);
-  } catch(e) { alert(e.message); }
+  if (!confirm(email+' 승인하시겠습니까?')) return;
+  try { const r=await apiGet({action:'approveMember',adminEmail:currentUser.email,targetEmail:email}); if(r.success) loadAdminMembers(); else alert(r.message); }
+  catch(e){alert(e.message);}
 }
-
-// ── Admin: Reject Member ───────────────────────────────
 async function rejectMember(email) {
-  if (!confirm(email + '을(를) 거부/삭제하시겠습니까?')) return;
-  try {
-    const result = await apiCall({ action: 'rejectMember', adminEmail: currentUser.email, targetEmail: email });
-    if (result.success) loadAdminMembers();
-    else alert(result.message);
-  } catch(e) { alert(e.message); }
+  if (!confirm(email+' 거부하시겠습니까?')) return;
+  try { const r=await apiGet({action:'rejectMember',adminEmail:currentUser.email,targetEmail:email}); if(r.success) loadAdminMembers(); else alert(r.message); }
+  catch(e){alert(e.message);}
 }
 
-// ── Admin: Load Referrals ──────────────────────────────
+// ── 관리자: 소개 현황 ─────────────────────────────────────────
 async function loadAdminReferrals() {
   const wrap = document.getElementById('adminReferralsWrap');
-  wrap.innerHTML = '<div class="empty-state"><div class="emoji">⏳</div>불러오는 중...</div>';
-
+  wrap.innerHTML = loading();
   try {
-    const result = await apiCall({ action: 'getAllReferrals', adminEmail: currentUser.email });
-    if (result.success) {
-      const rows = result.data || [];
-      document.getElementById('adminStatRefers').innerHTML = rows.length + ' <span>건</span>';
-
-      if (!rows.length) {
-        wrap.innerHTML = '<div class="empty-state"><div class="emoji">📊</div>소개 내역이 없습니다.</div>';
-        return;
-      }
-      wrap.innerHTML = `
-        <table>
-          <thead><tr>
-            <th>등록일</th><th>파트너</th><th>고객명</th><th>연락처</th><th>메모</th><th>상태</th><th>변경</th>
-          </tr></thead>
-          <tbody>
-            ${rows.map((r, i) => `
-              <tr>
-                <td>${r.date}</td>
-                <td>${r.partnerName}</td>
-                <td>${r.customerName}</td>
-                <td>${r.customerPhone}</td>
-                <td>${r.memo || '-'}</td>
-                <td><span class="badge ${r.status === '지급완료' ? 'badge-paid' : r.status === '계약완료' ? 'badge-active' : 'badge-pending'}">${r.status}</span></td>
-                <td>
-                  <select onchange="updateReferralStatus(${r.rowIndex}, this.value)" style="padding:4px 8px;border:1px solid #ddd;border-radius:6px;font-size:0.8rem;font-family:inherit">
-                    <option value="접수" ${r.status==='접수'?'selected':''}>접수</option>
-                    <option value="상담중" ${r.status==='상담중'?'selected':''}>상담중</option>
-                    <option value="계약완료" ${r.status==='계약완료'?'selected':''}>계약완료</option>
-                    <option value="지급완료" ${r.status==='지급완료'?'selected':''}>지급완료</option>
-                    <option value="무효" ${r.status==='무효'?'selected':''}>무효</option>
-                  </select>
-                </td>
-              </tr>
-            `).join('')}
-          </tbody>
-        </table>`;
+    const r = await apiGet({action:'getAllReferrals',adminEmail:currentUser.email});
+    if (r.success) {
+      const rows = r.data||[];
+      document.getElementById('adminStatRefers').innerHTML = rows.length+'<span> 건</span>';
+      if (!rows.length) { wrap.innerHTML=empty('소개 내역이 없습니다.'); return; }
+      wrap.innerHTML = `<table><thead><tr>
+        <th>등록일</th><th>파트너</th><th>고객명</th><th>연락처</th><th>관심타입</th><th>동의</th><th>상태</th><th>변경</th>
+      </tr></thead><tbody>
+        ${rows.map(r=>`<tr>
+          <td>${r.date}</td><td>${r.partnerName}</td><td>${r.customerName}</td><td>${r.customerPhone}</td>
+          <td>${r.interestType||'-'}</td><td>${chkBadge(r.privacyAgreed)}</td>
+          <td>${statusBadge(r.status)}</td>
+          <td><select onchange="updateStatus(${r.rowIndex},this.value)" style="padding:4px 8px;border:1px solid #ddd;border-radius:6px;font-size:0.8rem;font-family:inherit">
+            ${['접수','상담중','계약완료','지급완료','무효'].map(s=>`<option ${r.status===s?'selected':''}>${s}</option>`).join('')}
+          </select></td>
+        </tr>`).join('')}
+      </tbody></table>`;
     }
-  } catch(e) {
-    wrap.innerHTML = `<div class="empty-state"><div class="emoji">⚠️</div>${e.message}</div>`;
-  }
+  } catch(e) { wrap.innerHTML=empty('⚠️ '+e.message); }
 }
 
-// ── Admin: Update Referral Status ─────────────────────
-async function updateReferralStatus(rowIndex, status) {
-  try {
-    const result = await apiCall({ action: 'updateReferralStatus', adminEmail: currentUser.email, rowIndex, status });
-    if (!result.success) alert(result.message || '오류가 발생했습니다.');
-  } catch(e) { alert(e.message); }
+async function updateStatus(rowIndex, status) {
+  try { const r=await apiGet({action:'updateReferralStatus',adminEmail:currentUser.email,rowIndex,status}); if(!r.success) alert(r.message||'오류'); }
+  catch(e){alert(e.message);}
 }
 
-// ── Session restore ────────────────────────────────────
-(function() {
-  const saved = sessionStorage.getItem('user');
-  if (saved) {
-    currentUser = JSON.parse(saved);
-    if (currentUser.role === 'admin') enterAdmin();
-    else enterDashboard();
-  }
+// ── Tabs ──────────────────────────────────────────────────────
+function switchTab(id, btn) {
+  document.querySelectorAll('#page-dashboard .tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-dashboard .tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active'); btn.classList.add('active');
+  if (id==='tab-list') loadMyReferrals();
+}
+function switchAdminTab(id, btn) {
+  document.querySelectorAll('#page-admin .tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('#page-admin .tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active'); btn.classList.add('active');
+  if (id==='admin-referrals') loadAdminReferrals();
+  if (id==='admin-members') loadAdminMembers();
+}
+
+// ── API GET ───────────────────────────────────────────────────
+async function apiGet(params) {
+  const res = await fetch(GAS_URL+'?'+new URLSearchParams(params).toString());
+  if (!res.ok) throw new Error('서버 오류: '+res.status);
+  return res.json();
+}
+
+// ── 공통 헬퍼 ─────────────────────────────────────────────────
+function chkBadge(v) { return (v==='true'||v===true||v==='TRUE')? '<span class="badge badge-active">동의</span>':'<span class="badge badge-pending">미동의</span>'; }
+function statusBadge(s) {
+  const cls = s==='지급완료'?'badge-paid':s==='계약완료'?'badge-active':'badge-pending';
+  return `<span class="badge ${cls}">${s}</span>`;
+}
+function loading() { return '<div class="empty-state"><div class="emoji">⏳</div>불러오는 중...</div>'; }
+function empty(msg) { return `<div class="empty-state"><div class="emoji">📋</div>${msg}</div>`; }
+function showAlert(id,msg,type) { const el=document.getElementById(id); if(!el)return; el.className='alert alert-'+type+' show'; el.textContent=msg; if(type==='success') setTimeout(()=>el.classList.remove('show'),5000); }
+function hideAlert(id) { const el=document.getElementById(id); if(el)el.classList.remove('show'); }
+
+// ── 세션 복원 ─────────────────────────────────────────────────
+(function(){
+  const s=sessionStorage.getItem('user');
+  if(s){currentUser=JSON.parse(s); currentUser.role==='admin'?enterAdmin():enterDashboard();}
 })();
 </script>
 </body>
